@@ -4,21 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="start">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="testing1">
+      <change afterPath="$PROJECT_DIR$/src/noapplet/example/ComputerPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/noapplet/example/ConsoleUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/noapplet/example/HumanPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/noapplet/example/TextGraphics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/Omok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Omok.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2XsEPX06tAWzUhKHxuYVWRTiXIr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -32,7 +46,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/freck/OMOK_HW4/noapplet",
+    "last_opened_file_path": "C:/Users/freck/OMOK_HW4",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +77,7 @@
       <updated>1699408465233</updated>
       <workItem from="1699408466376" duration="856000" />
       <workItem from="1699409365479" duration="811000" />
+      <workItem from="1699410252540" duration="3162000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -72,7 +87,31 @@
       <option name="project" value="LOCAL" />
       <updated>1699409446261</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="start">
+      <option name="closed" value="true" />
+      <created>1699410285665</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699410285665</updated>
+    </task>
+    <task id="LOCAL-00003" summary="testing">
+      <option name="closed" value="true" />
+      <created>1699410466408</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699410466408</updated>
+    </task>
+    <task id="LOCAL-00004" summary="testing1">
+      <option name="closed" value="true" />
+      <created>1699411314897</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699411314897</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +130,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
-    <option name="LAST_COMMIT_MESSAGE" value="start" />
+    <MESSAGE value="testing" />
+    <MESSAGE value="testing1" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing1" />
   </component>
 </project>
