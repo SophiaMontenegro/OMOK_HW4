@@ -3,11 +3,28 @@ package noapplet.example;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
+
+import static com.sun.java.swing.action.ActionUtilities.IMAGE_DIR;
 
 public class Omok {
     public Omok() {
         var frame = new JFrame("Omok");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        JToolBar toolBar = new JToolBar("Omok");
+        JButton play1 = new JButton(createImageIcon("play.png"));
+
+        play1.addActionListener(new ActionListener() {
+            //creates a new game
+        });
+        play1.setToolTipText("Play a new game");
+        play1.setFocusPainted(false);
+        toolBar.add(play1);
+
+
+
 
         var panel = new JPanel();
         panel.setPreferredSize(new Dimension(300, 200));
@@ -42,11 +59,19 @@ public class Omok {
             }
 
         });
-
+        frame.add(panel,BorderLayout.NORTH);
+        frame.add(toolBar, BorderLayout.NORTH);
+        /*
         frame.setContentPane(panel);
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(true);*/
 
+    }
+    private ImageIcon createImageIcon(String filename){
+        URL imageURL = getClass().getResource(IMAGE_DIR + filename);
+        if(imageURL != null)
+            return new ImageIcon(imageURL);
+        return null;
     }
 
     public static void main(String[] args) {

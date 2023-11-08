@@ -32,7 +32,7 @@ public class HumanPlayer extends Player {
                 int x = Integer.parseInt(parts[0]);
                 int y = Integer.parseInt(parts[1]);
 
-                return board.validateMove(this.getSymbol(), x, y);//Calls validateMove method from Board class to see if x and y values are valid move
+                return board.validateMove(x, y, this);//Calls validateMove method from Board class to see if x and y values are valid move
             }
             catch (NumberFormatException e) {
                 System.out.println("INVALID. ENTER NUMERICAL VALUES.");

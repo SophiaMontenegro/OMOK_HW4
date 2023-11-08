@@ -85,12 +85,12 @@ public class TextGraphics {
         }
     }
     public void drawStone(String player1Symbol, String player2Symbol, Board board){
-        String[][] cells = board.getCells();
+        Player[][] cells = board.cells();
         int rowIndex = 3;//Starts at index 3
 
         for(int row = 0; row < cells.length; row++){//Adds player1's stones
             for(int col = 0; col < cells[row].length; col++){
-                String currentCell = cells[row][col];
+                Player currentCell = cells[row][col];
 
                 if(currentCell != null && currentCell.equals(player1Symbol)){
                     int displayRow = rowIndex;
