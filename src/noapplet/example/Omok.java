@@ -13,32 +13,37 @@ public class Omok extends NoApplet {
     private static JRadioButton human;
     private static JRadioButton computer;
     private static JButton play;
+    private BoardPanel boardPanel;
+
+    private Board board ;
 
     public Omok() {
 
         var frame = new JFrame("Omok");
         frame.setLayout(new BorderLayout());
+        frame.setPreferredSize(new Dimension(500, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JToolBar toolBar = getToolBar(frame);
         JPanel panel = getOptionPanel();
-        panel.add(toolBar, BorderLayout.NORTH);
+        frame.add(toolBar, BorderLayout.WEST);
+
+        board = new Board();
+        boardPanel = new BoardPanel(board);
+        frame.add(boardPanel, BorderLayout.CENTER);
 
         JMenuBar menuBar = getMenuBar(frame);
         frame.setJMenuBar(menuBar);
 
-        BoardPanel board = new BoardPanel();
-
-
-        frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.NORTH);
         frame.setVisible(true);
-        frame.setContentPane(panel);
+        //frame.setContentPane(panel);
         frame.pack();
     }
 
     private static JPanel getOptionPanel() {
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(300, 200));
+        panel.setPreferredSize(new Dimension(50, 50));
         human = new JRadioButton("Human");
         computer = new JRadioButton("Computer");
         play = new JButton("Play");
@@ -65,6 +70,7 @@ public class Omok extends NoApplet {
                 else if(computer.isSelected()){
                     displayOp = "Computer Selected!";
                     setSelectButtonsEnable(false);
+                    Player player2 = new ComputerPlayer("Computer", "X"); //remove symbol
                 }
                 else{
                     displayOp="No Selection!";

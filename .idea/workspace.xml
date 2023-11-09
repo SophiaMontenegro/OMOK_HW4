@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="key shortcuts">
-      <change afterPath="$PROJECT_DIR$/res/help.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/play.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/play.png" afterDir="false" />
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="time stamp: 11:59 pm">
+      <change afterPath="$PROJECT_DIR$/src/noapplet/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/noapplet/example/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/Omok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Omok.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +60,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\freck\OMOK_HW4\res" />
+      <recent name="C:\Users\freck\OMOK_HW4\src\noapplet\example" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -75,7 +77,7 @@
       <updated>1699408465233</updated>
       <workItem from="1699408466376" duration="856000" />
       <workItem from="1699409365479" duration="811000" />
-      <workItem from="1699410252540" duration="24552000" />
+      <workItem from="1699410252540" duration="34891000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -165,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699510915230</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="time stamp: 11:59 pm">
+      <option name="closed" value="true" />
+      <created>1699513186609</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699513186609</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +203,7 @@
     <MESSAGE value="exit button on toolbar" />
     <MESSAGE value="disable select buttons" />
     <MESSAGE value="key shortcuts" />
-    <option name="LAST_COMMIT_MESSAGE" value="key shortcuts" />
+    <MESSAGE value="time stamp: 11:59 pm" />
+    <option name="LAST_COMMIT_MESSAGE" value="time stamp: 11:59 pm" />
   </component>
 </project>
