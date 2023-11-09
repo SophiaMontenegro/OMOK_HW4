@@ -24,7 +24,7 @@ public class Omok extends NoApplet {
 
         JToolBar toolBar = getToolBar(frame);
         JPanel panel = getOptionPanel();
-        frame.add(toolBar, BorderLayout.NORTH);
+        panel.add(toolBar, BorderLayout.NORTH);
 
         JMenuBar menuBar = getMenuBar(frame);
         frame.setJMenuBar(menuBar);
@@ -75,10 +75,10 @@ public class Omok extends NoApplet {
         return panel;
     }
 
-    private static void setSelectButtonsEnable(boolean b) {
-        human.setEnabled(b);
-        computer.setEnabled(b);
-        play.setEnabled(b);
+    private static void setSelectButtonsEnable(boolean enable) {
+        human.setEnabled(enable);
+        computer.setEnabled(enable);
+        play.setEnabled(enable);
     }
 
     private JMenuBar getMenuBar(JFrame frame){
@@ -114,14 +114,14 @@ public class Omok extends NoApplet {
 
         });
         menu.add(newPlay);
-        JMenuItem helpButton = new JMenuItem("Help", KeyEvent.VK_P);
+        //help button
+        JMenuItem helpButton = new JMenuItem("Help", KeyEvent.VK_H);
         helpButton.setIcon(createImageIcon("help.png"));
         helpButton.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_Q, InputEvent.ALT_DOWN_MASK));
+                KeyEvent.VK_H, InputEvent.ALT_DOWN_MASK));
         helpButton.getAccessibleContext().setAccessibleDescription(
-                "Play a new game");
+                "Help with game");
         helpButton.addActionListener(new ActionListener() {
-            //creates a new game
             public void actionPerformed(ActionEvent e) {
                 //instructions
                 JOptionPane.showMessageDialog(frame, "The object of Omok is to get five consecutive stones.\nWhen its your turn try your best to win! \nHave fun!");
@@ -129,6 +129,29 @@ public class Omok extends NoApplet {
 
         });
         menu.add(helpButton);
+
+        //exit button
+        JMenuItem exitButton = new JMenuItem("EXIT",KeyEvent.VK_E);
+        exitButton.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_E, InputEvent.ALT_DOWN_MASK));
+        exitButton.getAccessibleContext().setAccessibleDescription(
+                "Exit a game");
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit Game",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if(result == JOptionPane.YES_OPTION){
+                    //JOptionPane.showOptionDialog(frame, "Bye","Exiting...", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+                    frame.dispose();
+                }else if (result == JOptionPane.NO_OPTION) {
+                    //resume game
+                    //do nothing
+                }
+            }
+
+        });
+        menu.add(exitButton);
         return menuBar;
     }
 
@@ -154,24 +177,16 @@ public class Omok extends NoApplet {
         newPlay.setFocusPainted(false);
         toolBar.add(newPlay);
 
-        JButton exit = new JButton(createImageIcon("exit.png"));
-        exit.addActionListener(new ActionListener() {
+        JButton help = new JButton(createImageIcon("help.png"));
+        help.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit Game",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE);
-                if(result == JOptionPane.YES_OPTION){
-                    frame.dispose();
-                }else if (result == JOptionPane.NO_OPTION) {
-                    //resume game
-                    //do nothing
-                }
+                //help
             }
 
         });
-        exit.setToolTipText("Exit Game");
-        exit.setFocusPainted(false);
-        toolBar.add(exit);
+        help.setToolTipText("Help");
+        help.setFocusPainted(false);
+        toolBar.add(help);
         return toolBar;
 
     }
