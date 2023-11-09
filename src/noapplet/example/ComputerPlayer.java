@@ -18,9 +18,10 @@ public class ComputerPlayer extends Player {
     public String requestMove(Board board){
         this.BOARD_SIZE = board.size();
         this.board = board;
-        int[] coordinates = bestMove(board);
+        //int[] coordinates = bestMove(board);
         return "";
     }
+    /*
     public int[] bestMove(Board board) {
         Player[][] cells = board.cells();
         int bestScore = Integer.MIN_VALUE;
@@ -30,7 +31,7 @@ public class ComputerPlayer extends Player {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 if (board.isEmpty(i,j)) {
                     cells[i][j] = this;  // add AI
-                    int moveScore = minimax(MAX_DEPTH, /*other player*/, Integer.MIN_VALUE, Integer.MAX_VALUE);
+                    int moveScore = minimax(MAX_DEPTH, //somethind, Integer.MIN_VALUE, Integer.MAX_VALUE);
                     cells[i][j] = null;
 
                     if (moveScore > bestScore) {
@@ -43,7 +44,7 @@ public class ComputerPlayer extends Player {
         }
 
         return move;
-    }
+    }*/
 
 
 

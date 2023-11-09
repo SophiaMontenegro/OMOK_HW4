@@ -5,9 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 
-import static com.sun.java.swing.action.ActionUtilities.IMAGE_DIR;
+//import static com.sun.java.swing.action.ActionUtilities.IMAGE_DIR;
 
 public class Omok {
+    //hover outline of where to place
     public Omok() {
         var frame = new JFrame("Omok");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,9 +16,22 @@ public class Omok {
 
         JToolBar toolBar = new JToolBar("Omok");
         JButton play1 = new JButton(createImageIcon("play.png"));
-
+        final JLabel label = new JLabel();
         play1.addActionListener(new ActionListener() {
             //creates a new game
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(frame,"Sure? You want to exit?", "Swing Tester",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if(result == JOptionPane.YES_OPTION){
+                    label.setText("You selected: Yes");
+                }else if (result == JOptionPane.NO_OPTION){
+                    label.setText("You selected: No");
+                }else {
+                    label.setText("None selected");
+                }
+            }
+
         });
         play1.setToolTipText("Play a new game");
         play1.setFocusPainted(false);
@@ -39,6 +53,7 @@ public class Omok {
         panel.add(human);
         panel.add(computer);
         panel.add(play);
+        panel.add(label);
 
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -65,10 +80,10 @@ public class Omok {
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);*/
-
+        frame.setVisible(true);
     }
     private ImageIcon createImageIcon(String filename){
-        URL imageURL = getClass().getResource(IMAGE_DIR + filename);
+        URL imageURL = getClass().getResource(filename);
         if(imageURL != null)
             return new ImageIcon(imageURL);
         return null;
