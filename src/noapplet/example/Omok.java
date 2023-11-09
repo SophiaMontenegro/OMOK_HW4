@@ -20,14 +20,15 @@ public class Omok extends NoApplet {
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-
         JToolBar toolBar = getToolBar(frame);
         JPanel panel = getOptionPanel();
         panel.add(toolBar, BorderLayout.NORTH);
 
         JMenuBar menuBar = getMenuBar(frame);
         frame.setJMenuBar(menuBar);
+
+        BoardPanel board = new BoardPanel();
+
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
