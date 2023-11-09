@@ -7,22 +7,12 @@ import java.awt.Graphics;
 
 public class BoardPanel extends JPanel {
     private Board board;
-    protected int delay = 100;
-    protected Timer timer;
     public BoardPanel(Board board){
+        this.board = board;
         //fill later
 
     }
 
-    public void init(){
-        timer = new Timer(delay, e -> repaint());
-    }
-    public void start() {
-        timer.start();
-    }
-    public void stop() {
-        timer.stop();
-    }
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);

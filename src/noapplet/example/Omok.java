@@ -37,7 +37,6 @@ public class Omok extends NoApplet {
 
         frame.add(panel, BorderLayout.NORTH);
         frame.setVisible(true);
-        //frame.setContentPane(panel);
         frame.pack();
     }
 
@@ -46,7 +45,7 @@ public class Omok extends NoApplet {
         panel.setPreferredSize(new Dimension(50, 50));
         human = new JRadioButton("Human");
         computer = new JRadioButton("Computer");
-        play = new JButton("Play");
+        play = new JButton("PLAY");
         ButtonGroup group = new ButtonGroup();
         group .add(computer);
         group.add(human);
@@ -96,7 +95,7 @@ public class Omok extends NoApplet {
         menu.getAccessibleContext().setAccessibleDescription("Game menu");
         menuBar.add(menu);
 
-        JMenuItem newPlay = new JMenuItem("Play", KeyEvent.VK_P);
+        JMenuItem newPlay = new JMenuItem("PLAY", KeyEvent.VK_P);
         newPlay.setIcon(createImageIcon("play.png"));
         newPlay.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_P, InputEvent.ALT_DOWN_MASK));
@@ -122,7 +121,7 @@ public class Omok extends NoApplet {
         });
         menu.add(newPlay);
         //help button
-        JMenuItem helpButton = new JMenuItem("Help", KeyEvent.VK_H);
+        JMenuItem helpButton = new JMenuItem("HELP", KeyEvent.VK_H);
         helpButton.setIcon(createImageIcon("help.png"));
         helpButton.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_H, InputEvent.ALT_DOWN_MASK));
@@ -199,7 +198,7 @@ public class Omok extends NoApplet {
     }
 
     private ImageIcon createImageIcon(String filename){
-        URL imageURL = getClass().getResource("res"+filename);
+        URL imageURL = getClass().getResource("./"+filename);
         if(imageURL != null)
             return new ImageIcon(imageURL);
         return null;
