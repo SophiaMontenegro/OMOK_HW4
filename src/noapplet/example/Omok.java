@@ -92,27 +92,44 @@ public class Omok extends NoApplet {
 
     private JToolBar getToolBar(JFrame frame){
         JToolBar toolBar = new JToolBar("Omok");
-        JButton play1 = new JButton(createImageIcon("play.png"));
-        final JLabel label = new JLabel();
-        play1.addActionListener(new ActionListener() {
+        JButton newPlay = new JButton(createImageIcon("play.png"));
+        newPlay.addActionListener(new ActionListener() {
             //creates a new game
             public void actionPerformed(ActionEvent e) {
                 int result = JOptionPane.showConfirmDialog(frame,"You want to start a new Game?", "New Game",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE);
                 if(result == JOptionPane.YES_OPTION){
-                    label.setText("You selected: Yes");
-                }else if (result == JOptionPane.NO_OPTION){
-                    label.setText("You selected: No");
-                }else {
-                    label.setText("None selected");
+                    //create new game
+                }else if (result == JOptionPane.NO_OPTION) {
+                    //resume game
+                    //do nothing
                 }
             }
 
         });
-        play1.setToolTipText("Play a new game");
-        play1.setFocusPainted(false);
-        toolBar.add(play1);
+        newPlay.setToolTipText("Play a new game");
+        newPlay.setFocusPainted(false);
+        toolBar.add(newPlay);
+
+        JButton exit = new JButton(createImageIcon("exit.png"));
+        exit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(frame,"Are you sure you want to exit?", "Exit Game",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if(result == JOptionPane.YES_OPTION){
+                    frame.dispose();
+                }else if (result == JOptionPane.NO_OPTION) {
+                    //resume game
+                    //do nothing
+                }
+            }
+
+        });
+        exit.setToolTipText("Exit Game");
+        exit.setFocusPainted(false);
+        toolBar.add(exit);
         return toolBar;
     }
 
