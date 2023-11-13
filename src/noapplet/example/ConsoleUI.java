@@ -7,7 +7,7 @@ public class ConsoleUI {
     private Player player1, player2, currentPlayer;
     private Board board;
     public ConsoleUI(){
-        Scanner scan = new Scanner(System.in);
+        /*Scanner scan = new Scanner(System.in);
         //Basic output to retrieve user's input
         System.out.println("WELCOME TO OMOK!");
         System.out.println("PLEASE SELECT A GAME MODE [P] FOR PLAYER VS PLAYER AND [C] FOR PLAYER VS COMPUTER. INVALID KEY WILL BE DEFAULT TO PLAYER VS COMPUTER:");
@@ -58,7 +58,7 @@ public class ConsoleUI {
                     System.out.println("GAME EXITING...");
                     return;//End game
             }
-        }
+        }*/
     }
     public void setCurrentPlayer(){
         //Randomly selects the first player

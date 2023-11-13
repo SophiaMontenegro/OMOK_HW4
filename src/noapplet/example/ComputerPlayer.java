@@ -15,7 +15,7 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public String requestMove(Board board){
+    public String requestMove(Board board, int x, int y){
         this.BOARD_SIZE = board.size();
         this.board = board;
         //int[] coordinates = bestMove(board);

@@ -11,7 +11,7 @@ public abstract class Player {
         this.symbol = symbol;
     }
 
-    public abstract String requestMove(Board board);//Every abstract class must have at least one abstract method
+    public abstract String requestMove(Board board, int x, int y);//Every abstract class must have at least one abstract method
 
     //Getters & Setter
     public String getName() {

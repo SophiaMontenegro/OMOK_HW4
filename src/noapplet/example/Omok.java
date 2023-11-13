@@ -13,7 +13,7 @@ public class Omok extends NoApplet {
     private static JRadioButton human;
     private static JRadioButton computer;
     private static JButton play;
-    private BoardPanel boardPanel;
+    private static BoardPanel boardPanel;
 
     private Board board ;
 
@@ -59,17 +59,15 @@ public class Omok extends NoApplet {
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 String displayOp = "";
-                if (human.isSelected() && computer.isSelected()){
-                    displayOp = "Only choose one!";
-                }
-                else if(human.isSelected()){
+                if(human.isSelected()){
                     displayOp = "Human Selected!";
                     setSelectButtonsEnable(false);
+                    boardPanel.setGameMode("HUMAN");
                 }
                 else if(computer.isSelected()){
                     displayOp = "Computer Selected!";
                     setSelectButtonsEnable(false);
-                    Player player2 = new ComputerPlayer("Computer", "X"); //remove symbol
+                    boardPanel.setGameMode("COMPUTER");
                 }
                 else{
                     displayOp="No Selection!";
