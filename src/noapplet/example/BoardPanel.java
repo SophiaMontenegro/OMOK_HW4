@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
+import java.util.List;
 
 public class BoardPanel extends JPanel {
     private Board boardObj; //delete?
@@ -29,6 +30,7 @@ public class BoardPanel extends JPanel {
     private int hoverCol = -1;//no valid position as default
 
     private boolean enableMouse = true;
+
     public BoardPanel(){
         boardObj = new Board();
         cells = boardObj.cells();
@@ -105,12 +107,17 @@ public class BoardPanel extends JPanel {
         }
         if(outcome == "PLAYER_WIN"){
             repaint();
-            if(boardObj.isWonBy(currPlayer)){//game over!!!!!
-                JOptionPane.showMessageDialog(this,
+            JOptionPane.showMessageDialog(this,
                         currPlayer.getName() + " wins!!!!!!!",
                         "Game Over", JOptionPane.INFORMATION_MESSAGE);
-                setEnableMouse(false);
-            }
+            setEnableMouse(false);
+        }
+        if(outcome == "BOARD_FULL"){
+            repaint();
+            JOptionPane.showMessageDialog(this,
+                        "DRAW!",
+                        "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            setEnableMouse(false);
         }
         swapCurrentPlayer();
     }
@@ -163,8 +170,22 @@ public class BoardPanel extends JPanel {
                 }
             }
         }
-        g.setColor(Color.BLACK);
+
+        List<Place> winningRow = boardObj.winningRow();
+
+        if(winningRow != null){
+            for(int i = 0; i < winningRow.size(); i++){
+                Place location = winningRow.get(i);
+                int x1 = location.x * cellSize;
+                int y1 = location.y * cellSize;
+                g.setColor(Color.YELLOW);
+                g.fillOval(y1 + (cellSize - stoneSize) / 2, x1 + (cellSize - stoneSize) / 2, stoneSize, stoneSize);
+            }
+        }
         g.drawString(status, 120, 350);
+        g.drawString(status, 120, 350);
+
     }
+
 
 }
