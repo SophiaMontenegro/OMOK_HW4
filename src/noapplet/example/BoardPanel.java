@@ -183,7 +183,7 @@ public class BoardPanel extends JPanel {
             }
         }
         g.drawString(status, 120, 350);
-        g.drawString(status, 120, 350);
+        g.drawString(status, 120, 350);//status
 
     }
 
