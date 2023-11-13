@@ -38,13 +38,14 @@ public class BoardPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int row = e.getY() / cellSize;
-                int col = e.getY() /cellSize;
+                int col = e.getX() /cellSize;
                 place(row, col);
             }
             @Override
             public void mouseMoved(MouseEvent e) {
                 hoverRow = e.getY() /cellSize;
                 hoverCol = e.getX() /cellSize;
+                repaint();
             }
 
             @Override
@@ -78,7 +79,14 @@ public class BoardPanel extends JPanel {
     }
 
     private void place(int row, int col){
-        String outcome = currPlayer.requestMove(boardObj, row, col);
+        String outcome;
+        if(currPlayer.getName() == "computer"){
+            outcome = currPlayer.requestMove(boardObj, -1, -1);
+            repaint();
+        }
+        else {
+            outcome = currPlayer.requestMove(boardObj, row, col);
+        }
         if(outcome == "STONE_PLACED"){
             repaint();
         }

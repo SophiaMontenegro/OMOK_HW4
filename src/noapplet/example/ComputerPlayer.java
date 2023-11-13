@@ -20,6 +20,14 @@ public class ComputerPlayer extends Player {
         this.BOARD_SIZE = board.size();
         this.board = board;
         //int[] coordinates = bestMove(board);
+        boolean cont = true;
+        Random rand = new Random();
+        while(cont){
+            int x1 = rand.nextInt(14);
+            int y1 = rand.nextInt(14);
+            String outcome = board.validateMove(x1, y1, this);
+            if(outcome != "CELL_UNAVAILABLE") return outcome;
+        }
         return "";
     }
     /*

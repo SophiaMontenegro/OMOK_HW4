@@ -92,7 +92,7 @@ public class Board {
         Such tests mentioned above is checked in consoleUI before method
         is called
          */
-        cells[y][x] = player;
+        cells[x][y] = player; //switch later? y x
 
     }
     /**Return a boolean value indicating whether the specified
