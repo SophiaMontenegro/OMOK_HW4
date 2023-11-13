@@ -7,30 +7,33 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 public class BoardPanel extends JPanel {
     private Board boardObj; //delete?
 
     private Player[][] cells;
+
+    private String status;
     private static final int boardSize = 15;//fixed size
     private static final int cellSize = 20; //size of each cell in the board in GUI
     private static final int stoneSize = 10;
 
-    //private Player[][] board; //add?
-
     private Player player1; //main user
     private Player player2; //can be another player or computer
-
     private Player currPlayer;//delete?
 
     private String gameMode; //delete?
 
     private int hoverRow = -1;//no valid position as default
     private int hoverCol = -1;//no valid position as default
-    public BoardPanel(Board boardObj){
-        this.boardObj = boardObj;
+    public BoardPanel(){
+        boardObj = new Board();
         cells = boardObj.cells();
-        //initBoard();//creates an empty player 2d array
+
+        status = "Welcome!";
+
+
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -52,25 +55,17 @@ public class BoardPanel extends JPanel {
             }
         });
     }
-/* //add?
-    private void initBoard(){
-        for(int i = 0; i < boardSize; i++){
-            for(int j = 0; j < boardSize; j++){
-                board[i][j] = null;
-            }
-        }
-    }*/
-
     public void setGameMode(String mode){
         gameMode = mode;
         if(mode == "HUMAN"){
-            player1 = new HumanPlayer("player1", "0");
-            player2 = new HumanPlayer("player2", "X");
+            player1 = new HumanPlayer("player1", Color.PINK);
+            player2 = new HumanPlayer("player2", Color.BLACK);
         }
         else {//human vs computer
-            player1 = new HumanPlayer("player1", "0");
-            player2 = new ComputerPlayer("player2", "X");
+            player1 = new HumanPlayer("player1", Color.PINK);
+            player2 = new ComputerPlayer("computer", Color.BLACK);
         }
+        setCurrentPlayer();
     }
 
     public String getGameMode(){
@@ -78,7 +73,6 @@ public class BoardPanel extends JPanel {
     }
 
     public void clearBoard(){
-        //initBoard();
         boardObj.clear();
         repaint();
     }
@@ -92,10 +86,32 @@ public class BoardPanel extends JPanel {
             repaint();
             if(boardObj.isWonBy(currPlayer)){//game over!!!!!
                 JOptionPane.showMessageDialog(this,
-                        "Player " + currPlayer.getName() + " wins!!!!!!!",
+                        currPlayer.getName() + " wins!!!!!!!",
                         "Game Over", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        swapCurrentPlayer();
+    }
+
+    public void setCurrentPlayer(){
+        //Randomly selects the first player
+        Random coinToss = new Random();
+        if(coinToss.nextBoolean()) currPlayer = player1;
+        else currPlayer = player2;
+
+        status = currPlayer + "'s turn!";
+    }
+    public void swapCurrentPlayer(){
+        // Swaps players
+        if (currPlayer == player1)
+            currPlayer = player2;
+        else currPlayer = player1;
+
+        status = currPlayer + "'s turn!";
+    }
+
+    public String getStatus(){
+        return status;
     }
 
     @Override
@@ -106,11 +122,23 @@ public class BoardPanel extends JPanel {
         g.setColor(Color.WHITE);
         g.fillRect(0,0, d.width, d.height);
 
-        for (int i = 50; i < 410; i+=20){
-            g.setColor(Color.BLACK);
-            g.drawLine(i,50, i, 390);
-            g.setColor(Color.BLACK);
-            g.drawLine(50, i, 390, i);
+        for (int i = 0; i < boardSize; i++) {//center the board at some point
+            for (int j = 0; j < boardSize; j++) {
+                int x = j * cellSize;
+                int y = i * cellSize;
+                g.setColor(Color.WHITE);
+                g.fillRect(x, y, cellSize, cellSize);
+                g.setColor(Color.BLACK);
+                g.drawRect(x, y, cellSize, cellSize);
+                if (i == hoverRow && j == hoverCol && cells[i][j] == null) {
+                    g.setColor(new Color(120, 120, 120, 80)); //hover fix
+                    g.fillRect(x, y, cellSize, cellSize);
+                }
+                if (cells[i][j] != null) {
+                    g.setColor(cells[i][j].getColor());
+                    g.fillOval(x + (cellSize - stoneSize) / 2, y + (cellSize - stoneSize) / 2, stoneSize, stoneSize);
+                }
+            }
         }
     }
 

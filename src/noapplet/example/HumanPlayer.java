@@ -1,13 +1,14 @@
 package noapplet.example;
 
+import java.awt.*;
 import java.util.Scanner;
 
 import static java.lang.Integer.valueOf;
 
 public class HumanPlayer extends Player {
 
-    HumanPlayer(String name, String symbol) {
-        super(name, symbol);
+    HumanPlayer(String name, Color color) {
+        super(name, color);
     }
     @Override
     public String requestMove(Board board, int x, int y){

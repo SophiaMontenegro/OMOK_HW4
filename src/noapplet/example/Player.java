@@ -1,14 +1,15 @@
 package noapplet.example;
 
+import java.awt.*;
 import java.util.Objects;
 
 public abstract class Player {
     private String name;
-    private String symbol;
+    private Color color;
 
-    Player(String name, String symbol){
+    Player(String name, Color color){
         this.name = name;
-        this.symbol = symbol;
+        this.color = color;
     }
 
     public abstract String requestMove(Board board, int x, int y);//Every abstract class must have at least one abstract method
@@ -17,12 +18,12 @@ public abstract class Player {
     public String getName() {
         return name;
     }
-    public String getSymbol() {
-        return this.symbol;
+    public Color getColor() {
+        return this.color;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setColor(String symbol) {
+        this.color = color;
     }
 
     @Override
@@ -30,12 +31,12 @@ public abstract class Player {
         //Intellij automatically creates an override for equals
         if (this == other) return true;
         if (!(other instanceof Player player)) return false;
-        return Objects.equals(getName(), player.getName()) && Objects.equals(getSymbol(), player.getSymbol());
+        return Objects.equals(getName(), player.getName()) && Objects.equals(getColor(), player.getColor());
     }
 
     @Override
     public int hashCode() {
         //Intellij automatically creates an override for hashCode
-        return Objects.hash(getName(), getSymbol());
+        return Objects.hash(getName(), getColor());
     }
 }

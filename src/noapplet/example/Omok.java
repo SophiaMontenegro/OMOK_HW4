@@ -9,13 +9,12 @@ import java.net.URL;
 
 //import static com.sun.java.swing.action.ActionUtilities.IMAGE_DIR;
 
-public class Omok extends NoApplet {
+public class Omok extends NoApplet{
     private static JRadioButton human;
     private static JRadioButton computer;
     private static JButton play;
     private static BoardPanel boardPanel;
 
-    private Board board ;
 
     public Omok() {
 
@@ -28,14 +27,24 @@ public class Omok extends NoApplet {
         JPanel panel = getOptionPanel();
         frame.add(toolBar, BorderLayout.WEST);
 
-        board = new Board();
-        boardPanel = new BoardPanel(board);
+        boardPanel = new BoardPanel();
+
+        //JPanel statusPanel = new JPanel();
+        JTextField status = new JTextField(boardPanel.getStatus());
+        //Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 35);
+        //status.setFont(font);
+        status.setHorizontalAlignment(JTextField.CENTER);
+        status.setEditable(false);
+        frame.add(status, BorderLayout.SOUTH);
+        //set it non editable and centered
+
         frame.add(boardPanel, BorderLayout.CENTER);
 
         JMenuBar menuBar = getMenuBar(frame);
         frame.setJMenuBar(menuBar);
 
         frame.add(panel, BorderLayout.NORTH);
+        //frame.add(statusPanel, BorderLayout.NORTH);
         frame.setVisible(true);
         frame.pack();
     }
@@ -109,6 +118,7 @@ public class Omok extends NoApplet {
                     //create new game
                     JOptionPane.showMessageDialog(frame, "Here is your new game!");
                     setSelectButtonsEnable(true);
+                    boardPanel.clearBoard();
 
                 }else if (result == JOptionPane.NO_OPTION) {
                     //resume game
@@ -170,6 +180,10 @@ public class Omok extends NoApplet {
                         JOptionPane.QUESTION_MESSAGE);
                 if(result == JOptionPane.YES_OPTION){
                     //create new game
+                    JOptionPane.showMessageDialog(frame, "Here is your new game!");
+                    setSelectButtonsEnable(true);
+                    boardPanel.clearBoard();
+
                 }else if (result == JOptionPane.NO_OPTION) {
                     //resume game
                     //do nothing
@@ -185,6 +199,7 @@ public class Omok extends NoApplet {
         help.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //help
+                JOptionPane.showMessageDialog(frame, "The object of Omok is to get five consecutive stones.\nWhen its your turn try your best to win! \nHave fun!");
             }
 
         });
@@ -204,12 +219,6 @@ public class Omok extends NoApplet {
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> new Omok());
-        //new Omok(new String[]{"width=330", "height=350"}).run();
-        /*
-        Omok om = new Omok();
-        om.setVisible(true);
-        om.setDefaultCloseOperation(DISPOSE_ON_CLOSE);*/
     }
-
 }
 

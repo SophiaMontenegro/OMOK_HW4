@@ -1,4 +1,5 @@
 package noapplet.example;
+import java.awt.*;
 import java.util.Random;
 
 public class ComputerPlayer extends Player {
@@ -10,8 +11,8 @@ public class ComputerPlayer extends Player {
 
     private Board board;
 
-    public ComputerPlayer(String name, String symbol) {
-        super(name, symbol);
+    public ComputerPlayer(String name, Color color) {
+        super(name, color);
     }
 
     @Override
