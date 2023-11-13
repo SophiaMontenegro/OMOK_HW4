@@ -27,6 +27,8 @@ public class BoardPanel extends JPanel {
 
     private int hoverRow = -1;//no valid position as default
     private int hoverCol = -1;//no valid position as default
+
+    private boolean enableMouse = true;
     public BoardPanel(){
         boardObj = new Board();
         cells = boardObj.cells();
@@ -37,22 +39,28 @@ public class BoardPanel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int row = e.getY() / cellSize;
-                int col = e.getX() /cellSize;
-                place(row, col);
+                if(enableMouse){
+                    int row = e.getY() / cellSize;
+                    int col = e.getX() /cellSize;
+                    place(row, col);
+                }
             }
             @Override
             public void mouseMoved(MouseEvent e) {
-                hoverRow = e.getY() /cellSize;
-                hoverCol = e.getX() /cellSize;
-                repaint();
+                if(enableMouse){
+                    hoverRow = e.getY() /cellSize;
+                    hoverCol = e.getX() /cellSize;
+                    repaint();
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                hoverRow = -1;
-                hoverCol = -1;
-                repaint();
+                if(enableMouse) {
+                    hoverRow = -1;
+                    hoverCol = -1;
+                    repaint();
+                }
             }
         });
     }
@@ -67,6 +75,7 @@ public class BoardPanel extends JPanel {
             player2 = new ComputerPlayer("computer", Color.BLACK);
         }
         setCurrentPlayer();
+        setEnableMouse(true);
     }
 
     public String getGameMode(){
@@ -76,6 +85,10 @@ public class BoardPanel extends JPanel {
     public void clearBoard(){
         boardObj.clear();
         repaint();
+    }
+
+    public void setEnableMouse(boolean enable){
+        enableMouse = enable;
     }
 
     private void place(int row, int col){
@@ -96,6 +109,7 @@ public class BoardPanel extends JPanel {
                 JOptionPane.showMessageDialog(this,
                         currPlayer.getName() + " wins!!!!!!!",
                         "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                setEnableMouse(false);
             }
         }
         swapCurrentPlayer();

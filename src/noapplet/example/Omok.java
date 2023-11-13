@@ -110,6 +110,7 @@ public class Omok extends NoApplet{
                     JOptionPane.showMessageDialog(frame, "Here is your new game!");
                     setSelectButtonsEnable(true);
                     boardPanel.clearBoard();
+                    boardPanel.setEnableMouse(false);
 
                 }else if (result == JOptionPane.NO_OPTION) {
                     //resume game
@@ -174,6 +175,7 @@ public class Omok extends NoApplet{
                     JOptionPane.showMessageDialog(frame, "Here is your new game!");
                     setSelectButtonsEnable(true);
                     boardPanel.clearBoard();
+                    boardPanel.setEnableMouse(false);
 
                 }else if (result == JOptionPane.NO_OPTION) {
                     //resume game
