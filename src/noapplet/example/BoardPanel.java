@@ -99,7 +99,8 @@ public class BoardPanel extends JPanel {
         if(coinToss.nextBoolean()) currPlayer = player1;
         else currPlayer = player2;
 
-        status = currPlayer + "'s turn!";
+        status = currPlayer.getName() + "'s turn!";
+        repaint();
     }
     public void swapCurrentPlayer(){
         // Swaps players
@@ -107,7 +108,7 @@ public class BoardPanel extends JPanel {
             currPlayer = player2;
         else currPlayer = player1;
 
-        status = currPlayer + "'s turn!";
+        status = currPlayer.getName() + "'s turn!";
     }
 
     public String getStatus(){
@@ -140,6 +141,8 @@ public class BoardPanel extends JPanel {
                 }
             }
         }
+        g.setColor(Color.BLACK);
+        g.drawString(status, 120, 350);
     }
 
 }

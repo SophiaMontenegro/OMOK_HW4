@@ -29,15 +29,6 @@ public class Omok extends NoApplet{
 
         boardPanel = new BoardPanel();
 
-        //JPanel statusPanel = new JPanel();
-        JTextField status = new JTextField(boardPanel.getStatus());
-        //Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 35);
-        //status.setFont(font);
-        status.setHorizontalAlignment(JTextField.CENTER);
-        status.setEditable(false);
-        frame.add(status, BorderLayout.SOUTH);
-        //set it non editable and centered
-
         frame.add(boardPanel, BorderLayout.CENTER);
 
         JMenuBar menuBar = getMenuBar(frame);
