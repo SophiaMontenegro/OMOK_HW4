@@ -209,9 +209,5 @@ public class Omok extends NoApplet{
             return new ImageIcon(imageURL);
         return null;
     }
-
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(() -> new Omok());
-    }
 }
 

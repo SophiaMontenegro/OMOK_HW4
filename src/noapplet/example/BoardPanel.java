@@ -29,7 +29,7 @@ public class BoardPanel extends JPanel {
     private int hoverRow = -1;//no valid position as default
     private int hoverCol = -1;//no valid position as default
 
-    private boolean enableMouse = true;
+    private boolean enableMouse = false;
 
     public BoardPanel(){
         boardObj = new Board();
@@ -97,15 +97,15 @@ public class BoardPanel extends JPanel {
         String outcome;
         if(currPlayer.getName() == "computer"){
             outcome = currPlayer.requestMove(boardObj, -1, -1);
-            repaint();
         }
         else {
             outcome = currPlayer.requestMove(boardObj, row, col);
         }
         if(outcome == "STONE_PLACED"){
             repaint();
+            swapCurrentPlayer();
         }
-        if(outcome == "PLAYER_WIN"){
+        else if(outcome == "PLAYER_WIN"){
             repaint();
             JOptionPane.showMessageDialog(this,
                         currPlayer.getName() + " wins!!!!!!!",
@@ -119,7 +119,6 @@ public class BoardPanel extends JPanel {
                         "Game Over", JOptionPane.INFORMATION_MESSAGE);
             setEnableMouse(false);
         }
-        swapCurrentPlayer();
     }
 
     public void setCurrentPlayer(){
@@ -173,7 +172,7 @@ public class BoardPanel extends JPanel {
 
         List<Place> winningRow = boardObj.winningRow();
 
-        if(winningRow != null){
+        if(winningRow.size() == 5){
             for(int i = 0; i < winningRow.size(); i++){
                 Place location = winningRow.get(i);
                 int x1 = location.x * cellSize;
@@ -182,7 +181,7 @@ public class BoardPanel extends JPanel {
                 g.fillOval(y1 + (cellSize - stoneSize) / 2, x1 + (cellSize - stoneSize) / 2, stoneSize, stoneSize);
             }
         }
-        g.drawString(status, 120, 350);
+        g.setColor(Color.BLACK);
         g.drawString(status, 120, 350);//status
 
     }

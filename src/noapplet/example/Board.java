@@ -103,7 +103,7 @@ public class Board {
      * @return boolean if omok board is empty or not
      */
     public boolean isEmpty(int x, int y) {
-        return cells[y][x] == null;
+        return cells[x][y] == null;
     }
     /**Return a boolean value indicating whether the given x and y value
      * is in the bounds of the omok board (based on 0 indexing)
