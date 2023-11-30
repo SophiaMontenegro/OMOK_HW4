@@ -26,9 +26,6 @@ public class BoardPanel extends JPanel {
 
     private String gameMode; //delete?
 
-    private int hoverRow;//no valid position as default
-    private int hoverCol;//no valid position as default
-
     private boolean enableMouse = false;
 
     public BoardPanel(){
@@ -45,23 +42,6 @@ public class BoardPanel extends JPanel {
                     int row = e.getY() / cellSize;
                     int col = e.getX() /cellSize;
                     place(row, col);
-                }
-            }
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                if(enableMouse){
-                    hoverRow = e.getY() /cellSize;
-                    hoverCol = e.getX() /cellSize;
-                    repaint();
-                }
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                if(enableMouse) {
-                    hoverRow = -1;
-                    hoverCol = -1;
-                    repaint();
                 }
             }
         });
@@ -159,10 +139,6 @@ public class BoardPanel extends JPanel {
                 g.fillRect(x, y, cellSize, cellSize);
                 g.setColor(Color.BLACK);
                 g.drawRect(x, y, cellSize, cellSize);
-                if (i == hoverRow && j == hoverCol && cells[i][j] == null) {
-                    g.setColor(new Color(120, 120, 120, 80)); //hover fix
-                    g.fillRect(x, y, cellSize, cellSize);
-                }
                 if (cells[i][j] != null) {
                     g.setColor(cells[i][j].getColor());
                     g.fillOval(x + (cellSize - stoneSize) / 2, y + (cellSize - stoneSize) / 2, stoneSize, stoneSize);
@@ -177,7 +153,7 @@ public class BoardPanel extends JPanel {
                 Place location = winningRow.get(i);
                 int x1 = location.x * cellSize;
                 int y1 = location.y * cellSize;
-                g.setColor(Color.YELLOW);
+                g.setColor(Color.GREEN);
                 g.fillOval(y1 + (cellSize - stoneSize) / 2, x1 + (cellSize - stoneSize) / 2, stoneSize, stoneSize);
             }
         }
