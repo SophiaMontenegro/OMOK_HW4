@@ -13,7 +13,7 @@ import java.util.List;
 public class BoardPanel extends JPanel {
     private Board boardObj; //delete?
 
-    private Player[][] cells;
+    private Player[][] cells; //array
 
     private String status;
     private static final int boardSize = 15;//fixed size
