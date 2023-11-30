@@ -26,8 +26,8 @@ public class BoardPanel extends JPanel {
 
     private String gameMode; //delete?
 
-    private int hoverRow = -1;//no valid position as default
-    private int hoverCol = -1;//no valid position as default
+    private int hoverRow;//no valid position as default
+    private int hoverCol;//no valid position as default
 
     private boolean enableMouse = false;
 
