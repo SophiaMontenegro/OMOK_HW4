@@ -13,6 +13,7 @@ public class Omok extends NoApplet{
     private static JRadioButton human;
     private static JRadioButton computer;
     private static JButton play;
+    private static JButton pair;
     private static BoardPanel boardPanel;
 
 
@@ -46,6 +47,7 @@ public class Omok extends NoApplet{
         human = new JRadioButton("Human");
         computer = new JRadioButton("Computer");
         play = new JButton("PLAY");
+        pair = new JButton("PAIR");
         ButtonGroup group = new ButtonGroup();
         group .add(computer);
         group.add(human);
@@ -55,6 +57,7 @@ public class Omok extends NoApplet{
         panel.add(human);
         panel.add(computer);
         panel.add(play);
+        panel.add(pair);
 
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -73,6 +76,12 @@ public class Omok extends NoApplet{
                     displayOp="No Selection!";
                 }
                 JOptionPane.showMessageDialog(panel, displayOp); // fancy dialog window
+            }
+
+        });
+        pair.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                //show connect panel
             }
 
         });
