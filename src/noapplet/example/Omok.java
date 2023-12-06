@@ -251,7 +251,7 @@ public class Omok extends NoApplet{
     private void networkFrame(){
         JFrame networkFrame = new JFrame("Omok Network");
         networkFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        networkFrame.setSize(300,150);
+        networkFrame.setSize(300,200);
         networkFrame.setVisible(true);
 
         JPanel networkPanel = new JPanel();
@@ -267,6 +267,20 @@ public class Omok extends NoApplet{
             }
         });
         networkPanel.add(defaultURL);
+        JPanel gameOptionPanel = new JPanel();
+        gameOptionPanel.setPreferredSize(new Dimension(50, 50));
+        JRadioButton random = new JRadioButton("RANDOM");
+        JRadioButton smart = new JRadioButton("SMART");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(random);
+        group.add(smart);
+        JLabel gameOption = new JLabel("Choose Game Type:");
+        gameOptionPanel.add(gameOption);
+        gameOptionPanel.add(random);
+        gameOptionPanel.add(smart);
+        networkFrame.add(gameOptionPanel, BorderLayout.CENTER);
+
         networkFrame.add(networkPanel, BorderLayout.NORTH);
 
         JPanel networkButtons = new JPanel();
@@ -283,18 +297,48 @@ public class Omok extends NoApplet{
 
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //save serverURL
-                serverURLConnect = String.valueOf(serverURL);
-                //close networkFrame
-                networkFrame.dispose();
+                //must have choosen a strategy
+                String displayOp = "";
+                String strategy;
+                boolean ableToConnect = false;
+                if(random.isSelected()){
+                    displayOp = "Random Selected!";
+                    //save option
+                    strategy = "r";
+                    ableToConnect = true;
+                }
+                else if(smart.isSelected()){
+                    displayOp = "Smart Selected!";
+                    //save option
+                    strategy = "s";
+                    ableToConnect = true;
+                }
+                else{
+                    displayOp = "No Option Selection!";
+                }
+                if(serverURL.getText().length() <= 0){//no inputted serverURL
+                    displayOp = "No Server URL Inputted!";
+                    ableToConnect = false;
+                }
+                System.out.println(serverURL.getText());
                 //connect to server
                 /*
                 if(connection failed){
                     JOptionPane.showMessageDialog(frame, "Connection Failed! Try again!");
+                    ableToConnect = false;
                 }
                 */
                 //open log if connection is successful
-                logFrame();
+                //save serverURL
+                serverURLConnect = serverURL.getText();
+                if(!ableToConnect){
+                    JOptionPane.showMessageDialog(networkFrame, displayOp);
+                }
+                else{
+                    //close networkFrame
+                    networkFrame.dispose();
+                    logFrame();
+                }
             }
         });
         networkButtons.setLayout(new FlowLayout(FlowLayout.RIGHT));

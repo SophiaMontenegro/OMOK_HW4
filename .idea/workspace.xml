@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="network and log display progress 1">
-      <change afterPath="$PROJECT_DIR$/src/noapplet/example/ConnectURL.java" afterDir="false" />
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="connect progress">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/ConnectURL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/ConnectURL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/noapplet/example/Omok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Omok.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +111,7 @@
       <workItem from="1701219237765" duration="135000" />
       <workItem from="1701380360018" duration="18000" />
       <workItem from="1701382164432" duration="2679000" />
-      <workItem from="1701817977557" duration="10827000" />
+      <workItem from="1701817977557" duration="12667000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -360,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701884226851</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="connect progress">
+      <option name="closed" value="true" />
+      <created>1701886038470</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701886038470</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing1" />
     <MESSAGE value="base" />
     <MESSAGE value=" progress time stamp: 10:50 pm" />
     <MESSAGE value="progress time stamp: 7:59pm" />
@@ -403,6 +411,7 @@
     <MESSAGE value="network and log" />
     <MESSAGE value="network and log display progress" />
     <MESSAGE value="network and log display progress 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="network and log display progress 1" />
+    <MESSAGE value="connect progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect progress" />
   </component>
 </project>
