@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="removed hover" />
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="added pair button">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,6 +109,7 @@
       <workItem from="1701219237765" duration="135000" />
       <workItem from="1701380360018" duration="18000" />
       <workItem from="1701382164432" duration="2679000" />
+      <workItem from="1701817977557" duration="1499000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -324,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701386227099</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added pair button">
+      <option name="closed" value="true" />
+      <created>1701818273034</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1701818273034</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +375,7 @@
     <MESSAGE value="finished!!! forgot to commit before" />
     <MESSAGE value="Exercise Omok Info done as well as some fixed bugs" />
     <MESSAGE value="removed hover" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed hover" />
+    <MESSAGE value="added pair button" />
+    <option name="LAST_COMMIT_MESSAGE" value="added pair button" />
   </component>
 </project>
