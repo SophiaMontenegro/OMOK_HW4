@@ -283,12 +283,17 @@ public class Omok extends NoApplet{
 
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //connect to network
                 //save serverURL
                 serverURLConnect = String.valueOf(serverURL);
                 //close networkFrame
                 networkFrame.dispose();
-                //open log
+                //connect to server
+                /*
+                if(connection failed){
+                    JOptionPane.showMessageDialog(frame, "Connection Failed! Try again!");
+                }
+                */
+                //open log if connection is successful
                 logFrame();
             }
         });
@@ -328,14 +333,6 @@ public class Omok extends NoApplet{
             }
         });
         logFrame.add(messageBox);
-
-        //connect to server
-        /*
-        if(connection failed){
-            JOptionPane.showMessageDialog(frame, "Connection Failed! Try again!");
-            logFrame.dispose();
-        }
-        */
     }
 }
 
