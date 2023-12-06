@@ -299,7 +299,43 @@ public class Omok extends NoApplet{
         networkFrame.add(networkButtons, BorderLayout.SOUTH);
     }
     private void logFrame(){
-        //show
+        //should display received and response messages
+        JFrame logFrame = new JFrame("Omok Log");
+        logFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        logFrame.setSize(300,300);
+        logFrame.setVisible(true);
+
+        //panel for messages
+        JPanel messageBox = new JPanel();
+        messageBox.setPreferredSize(new Dimension(300, 200));
+        var display = new JTextArea(13, 25);
+        display.setEditable(false);
+        var scroll = new JScrollPane(display);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        messageBox.add(scroll);
+
+        //panel for close
+        JPanel closeBar = new JPanel();
+        closeBar.setPreferredSize(new Dimension(300, 50));
+        var close = new JButton("CLOSE");
+        closeBar.add(close);
+        messageBox.add(closeBar);
+        close.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //close window
+                logFrame.dispose();
+            }
+        });
+        logFrame.add(messageBox);
+
+        //connect to server
+        /*
+        if(connection failed){
+            JOptionPane.showMessageDialog(frame, "Connection Failed! Try again!");
+            logFrame.dispose();
+        }
+        */
     }
 }
 
