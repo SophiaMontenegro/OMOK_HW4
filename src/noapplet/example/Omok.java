@@ -15,6 +15,7 @@ public class Omok extends NoApplet{
     private static JButton play;
     private static JButton pair;
     private static BoardPanel boardPanel;
+    private String serverURLConnect;
 
 
     public Omok() {
@@ -167,6 +168,36 @@ public class Omok extends NoApplet{
 
         });
         menu.add(exitButton);
+
+        //network
+        JMenuItem network = new JMenuItem("NETWORK", KeyEvent.VK_N);
+        network.setIcon(createImageIcon("network.png"));
+        network.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_N, InputEvent.ALT_DOWN_MASK));
+        network.getAccessibleContext().setAccessibleDescription(
+                "Connect to Website");
+        network.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //open frame to connect to network
+                networkFrame();
+            }
+        });
+        menu.add(network);
+
+        //log
+        JMenuItem log = new JMenuItem("LOG", KeyEvent.VK_L);
+        log.setIcon(createImageIcon("log.png"));
+        log.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_L, InputEvent.ALT_DOWN_MASK));
+        log.getAccessibleContext().setAccessibleDescription(
+                "Network Log");
+        log.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //open log
+                logFrame();
+            }
+        });
+        menu.add(log);
         return menuBar;
     }
 
@@ -191,7 +222,6 @@ public class Omok extends NoApplet{
                     //do nothing
                 }
             }
-
         });
         newPlay.setToolTipText("Play a new game");
         newPlay.setFocusPainted(false);
@@ -203,7 +233,6 @@ public class Omok extends NoApplet{
                 //help
                 JOptionPane.showMessageDialog(frame, "The object of Omok is to get five consecutive stones.\nWhen its your turn try your best to win! \nHave fun!");
             }
-
         });
         help.setToolTipText("Help");
         help.setFocusPainted(false);
@@ -217,6 +246,60 @@ public class Omok extends NoApplet{
         if(imageURL != null)
             return new ImageIcon(imageURL);
         return null;
+    }
+
+    private void networkFrame(){
+        JFrame networkFrame = new JFrame("Omok Network");
+        networkFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        networkFrame.setSize(300,150);
+        networkFrame.setVisible(true);
+
+        JPanel networkPanel = new JPanel();
+        networkPanel.setPreferredSize(new Dimension(300, 50));
+        JLabel serverLabel = new JLabel("Server URL");
+        JTextField serverURL = new JTextField(18);
+        networkPanel.add(serverLabel);
+        networkPanel.add(serverURL);
+        JButton defaultURL = new JButton("DEFAULT");
+        defaultURL.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                serverURL.setText("http://omok.atwebpages.com");
+            }
+        });
+        networkPanel.add(defaultURL);
+        networkFrame.add(networkPanel, BorderLayout.NORTH);
+
+        JPanel networkButtons = new JPanel();
+        networkButtons.setPreferredSize(new Dimension(300, 50));
+        JButton cancel = new JButton("CANCEL");
+        JButton save = new JButton("SAVE");
+
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //close window
+                networkFrame.dispose();
+            }
+        });
+
+        save.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //connect to network
+                //save serverURL
+                serverURLConnect = String.valueOf(serverURL);
+                //close networkFrame
+                networkFrame.dispose();
+                //open log
+                logFrame();
+            }
+        });
+        networkButtons.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        networkButtons.add(cancel);
+        networkButtons.add(save);
+
+        networkFrame.add(networkButtons, BorderLayout.SOUTH);
+    }
+    private void logFrame(){
+        //show
     }
 }
 
