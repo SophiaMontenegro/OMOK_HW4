@@ -7,7 +7,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ConnectURL {
-    public String sendGet(String serverURL, String choice){
+    private String pid;
+    private String serverURL;
+    private String choice;
+    public ConnectURL(String serverURL, String choice) {
+        this.serverURL = serverURL;
+        this.choice = choice;
+    }
+    public String sendGet(){
         HttpURLConnection connect = null;
 
         String path = "/new/?strategy" + choice; //include choice
@@ -18,11 +25,11 @@ public class ConnectURL {
             StringBuilder response = new StringBuilder();
             String line;
 
-            while ((line = in.readLine()) != null){
+            while((line = in.readLine()) != null){
                 response.append(line);
             }
             return response.toString();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if(connect != null){
@@ -31,4 +38,14 @@ public class ConnectURL {
         }
         return null;
     }
+    public String getServerURL(){
+        return serverURL;
+    }
+    public String getGameOption(){
+        return choice;
+    }
+    public String getPid(){
+        return pid;
+    }
+
 }

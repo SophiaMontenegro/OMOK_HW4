@@ -13,9 +13,9 @@ public class Omok extends NoApplet{
     private static JRadioButton human;
     private static JRadioButton computer;
     private static JButton play;
-    private static JButton pair;
     private static BoardPanel boardPanel;
     private String serverURLConnect;
+    private String response;
 
 
     public Omok() {
@@ -48,7 +48,6 @@ public class Omok extends NoApplet{
         human = new JRadioButton("Human");
         computer = new JRadioButton("Computer");
         play = new JButton("PLAY");
-        pair = new JButton("PAIR");
         ButtonGroup group = new ButtonGroup();
         group .add(computer);
         group.add(human);
@@ -58,7 +57,6 @@ public class Omok extends NoApplet{
         panel.add(human);
         panel.add(computer);
         panel.add(play);
-        panel.add(pair);
 
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -77,12 +75,6 @@ public class Omok extends NoApplet{
                     displayOp="No Selection!";
                 }
                 JOptionPane.showMessageDialog(panel, displayOp); // fancy dialog window
-            }
-
-        });
-        pair.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                //show connect panel
             }
 
         });
@@ -299,7 +291,7 @@ public class Omok extends NoApplet{
             public void actionPerformed(ActionEvent e) {
                 //must have choosen a strategy
                 String displayOp = "";
-                String strategy;
+                String strategy = "s";
                 boolean ableToConnect = false;
                 if(random.isSelected()){
                     displayOp = "Random Selected!";
@@ -320,22 +312,24 @@ public class Omok extends NoApplet{
                     displayOp = "No Server URL Inputted!";
                     ableToConnect = false;
                 }
-                System.out.println(serverURL.getText());
+                serverURLConnect = serverURL.getText();
+                ConnectURL connectToWeb = new ConnectURL(serverURLConnect, strategy);
+                String connectResponse = connectToWeb.sendGet();
+
+
                 //connect to server
-                /*
-                if(connection failed){
-                    JOptionPane.showMessageDialog(frame, "Connection Failed! Try again!");
+                if(connectResponse == null){
+                    displayOp = "Connection Failed! Try again!";
                     ableToConnect = false;
                 }
-                */
+
                 //open log if connection is successful
-                //save serverURL
-                serverURLConnect = serverURL.getText();
                 if(!ableToConnect){
                     JOptionPane.showMessageDialog(networkFrame, displayOp);
                 }
                 else{
                     //close networkFrame
+                    response = connectResponse;
                     networkFrame.dispose();
                     logFrame();
                 }
@@ -377,6 +371,11 @@ public class Omok extends NoApplet{
             }
         });
         logFrame.add(messageBox);
+
+        if(response != null){
+            display.append(response);
+            display.append("\n");
+        }
     }
 }
 
