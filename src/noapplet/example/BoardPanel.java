@@ -90,7 +90,7 @@ public class BoardPanel extends JPanel {
     private void place(int row, int col){
         String outcome = " ";
         if(gameMode == "NETWORK"){
-            placeWebGame(row, col, "player1");
+            placeWebGame(row, col);
             return; //don't go through the rest of the method
         }
         else{//gameMode is Computer or Human
@@ -120,7 +120,7 @@ public class BoardPanel extends JPanel {
             setEnableMouse(false);
         }
     }
-    private void placeWebGame(int row, int col, String playerName) {
+    private void placeWebGame(int row, int col) {
         String outcome;
 
         if (currPlayer.getName() == "player1") {
@@ -151,7 +151,7 @@ public class BoardPanel extends JPanel {
                 status = currPlayer.getName() + "'s turn!";
                 //disable mouse
                 setEnableMouse(false);
-                placeWebGame(moveX, moveY, "network");
+                placeWebGame(moveX, moveY);
             }
             if(outcome == "PLAYER_WIN"){
                 placeStoneGraphic(outcome);//winner
