@@ -13,6 +13,7 @@ import java.net.URL;
 
 public class OmokLog{
     private JTextArea display;
+    private JFrame logFrame;
     private String pid;
     private String URL;
     public OmokLog(){
@@ -83,17 +84,22 @@ public class OmokLog{
         display.append(message);
         display.append("\n");
     }
+    public void close(){
+        if(logFrame != null){
+            logFrame.dispose();
+        }
+    }
     public void createLogFrame(){
         //should display received and response messages
-        JFrame logFrame = new JFrame("Omok Log");
+        logFrame = new JFrame("Omok Log");
         logFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        logFrame.setSize(300,300);
+        logFrame.setSize(450,300);
         logFrame.setVisible(true);
 
         //panel for messages
         JPanel messageBox = new JPanel();
         messageBox.setPreferredSize(new Dimension(300, 200));
-        display = new JTextArea(13, 25);
+        display = new JTextArea(13, 40);
         display.setEditable(false);
         var scroll = new JScrollPane(display);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

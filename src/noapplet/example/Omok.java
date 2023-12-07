@@ -14,6 +14,7 @@ public class Omok extends NoApplet{
     private static JRadioButton computer;
     private static JButton play;
     private static BoardPanel boardPanel;
+    private static boolean gameInProgress = false;
     private String serverURLConnect;
 
     private OmokLog log; //logFrame
@@ -70,11 +71,13 @@ public class Omok extends NoApplet{
                 if(human.isSelected()){
                     displayOp = "Human Selected!";
                     setSelectButtonsEnable(false);
+                    gameInProgress = true;
                     boardPanel.setGameMode("HUMAN");
                 }
                 else if(computer.isSelected()){
                     displayOp = "Computer Selected!";
                     setSelectButtonsEnable(false);
+                    gameInProgress = true;
                     boardPanel.setGameMode("COMPUTER");
                 }
                 else{
@@ -91,6 +94,9 @@ public class Omok extends NoApplet{
         human.setEnabled(enable);
         computer.setEnabled(enable);
         play.setEnabled(enable);
+    }
+    private static void setGameInProgress(boolean progress) {
+        gameInProgress = progress;
     }
 
     private JMenuBar getMenuBar(JFrame frame){
@@ -157,7 +163,9 @@ public class Omok extends NoApplet{
                         JOptionPane.QUESTION_MESSAGE);
                 if(result == JOptionPane.YES_OPTION){
                     //JOptionPane.showOptionDialog(frame, "Bye","Exiting...", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+                    boardPanel.clearBoard();
                     frame.dispose();
+
                 }else if (result == JOptionPane.NO_OPTION) {
                     //resume game
                     //do nothing
@@ -295,6 +303,20 @@ public class Omok extends NoApplet{
 
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                if(gameInProgress){
+                    int result = JOptionPane.showConfirmDialog(networkFrame,"Are you sure you want start a new Network Game?", "Game In Progress",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE);
+                    if(result == JOptionPane.YES_OPTION){
+                        boardPanel.clearBoard();
+                        boardPanel.setEnableMouse(false);
+
+                    }else if (result == JOptionPane.NO_OPTION) {
+                        networkFrame.dispose();
+                        return; //don't continue
+                    }
+                }
+                gameInProgress = true;
                 //must have choosen a strategy
                 String displayOp = "";
                 String strategy = "s";

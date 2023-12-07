@@ -49,7 +49,6 @@ public class Board {
                 cells[col][row] = null;
             }
         }
-
     }
 
     public String validateMove(int x, int y, Player player) {

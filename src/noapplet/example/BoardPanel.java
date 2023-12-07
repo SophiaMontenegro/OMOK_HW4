@@ -56,16 +56,18 @@ public class BoardPanel extends JPanel {
         if(mode == "HUMAN"){
             player1 = new HumanPlayer("player1", Color.PINK);
             player2 = new HumanPlayer("player2", Color.BLACK);
+            setCurrentPlayer();
         }
         else if(mode == "COMPUTER"){
             player1 = new HumanPlayer("player1", Color.PINK);
             player2 = new ComputerPlayer("computer", Color.BLACK);
+            setCurrentPlayer();
         }
         else{//network
             player1 = new HumanPlayer("player1", Color.PINK);
             player2 = new HumanPlayer("network", Color.BLACK);
+            currPlayer = player1;
         }
-        setCurrentPlayer();
         setEnableMouse(true);
     }
 
@@ -76,6 +78,9 @@ public class BoardPanel extends JPanel {
     public void clearBoard(){
         boardObj.clear();
         repaint();
+        if(log != null){
+            log.close();
+        }
     }
 
     public void setEnableMouse(boolean enable){
@@ -120,7 +125,7 @@ public class BoardPanel extends JPanel {
 
         if (currPlayer.getName() == "player1") {
             outcome = currPlayer.requestMove(boardObj, row, col);//clicked
-            if (outcome == "STONE_PLACED" || outcome == "PLAYER_WIN") {//send only if its valid
+            if (outcome == "STONE_PLACED") {//send only if its valid
                 //send move
                 String response = log.sendPlay(row, col);
                 //System.out.println(response); //test
@@ -141,14 +146,15 @@ public class BoardPanel extends JPanel {
                     stringY = stringY.substring(1, 2);
                 }
                 int moveX = Integer.valueOf(stringX);
-                System.out.println("x "+moveX);//test
                 int moveY = Integer.valueOf(stringY);
-                System.out.println("y "+moveY);//test
                 placeStoneGraphic(outcome);
                 currPlayer = player2;
                 //disable mouse
                 setEnableMouse(false);
                 placeWebGame(moveX, moveY, "network");
+            }
+            if(outcome == "PLAYER_WIN"){
+                placeStoneGraphic(outcome);//winner
             }
         } else {//network
             //System.out.println("TOUCH THIS");//test
