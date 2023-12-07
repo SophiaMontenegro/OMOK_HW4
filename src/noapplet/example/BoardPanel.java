@@ -85,13 +85,8 @@ public class BoardPanel extends JPanel {
     private void place(int row, int col){
         String outcome = " ";
         if(gameMode == "NETWORK"){
-            if(currPlayer.getName() == "network"){
-                //receive move
-            }
-            else{//human
-                //send move
-                outcome = currPlayer.requestMove(boardObj, row, col);
-            }
+            placeWebGame(row, col, "player1");
+            return; //don't go through the rest of the method
         }
         else{//gameMode is Computer or Human
             if(currPlayer.getName() == "computer"){
@@ -117,6 +112,56 @@ public class BoardPanel extends JPanel {
             JOptionPane.showMessageDialog(this,
                         "DRAW!",
                         "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            setEnableMouse(false);
+        }
+    }
+    private void placeWebGame(int row, int col, String playerName) {
+        String outcome;
+
+        if (currPlayer.getName() == "human") {
+            outcome = currPlayer.requestMove(boardObj, row, col);//clicked
+            if (outcome == "STONE_PLACED" || outcome == "PLAYER_WIN") {//send only if its valid
+                //send move
+                String response = log.sendPlay(row, col);
+                //split response
+                String[] responseArray = response.split("\"");
+                String stringX = responseArray[18];
+                stringX = stringX.substring(1, 2);
+                String stringY = responseArray[20];
+                stringY = stringY.substring(1, 2);
+                int moveX = Integer.valueOf(stringX);
+                int moveY = Integer.valueOf(stringY);
+                currPlayer = player2;
+                placeStoneGraphic(outcome);
+                currPlayer = player2;
+                //disable mouse
+                setEnableMouse(false);
+                placeWebGame(moveX, moveY, "network");
+            }
+        } else {//network
+            outcome = currPlayer.requestMove(boardObj, row, col);
+            placeStoneGraphic(outcome);
+            currPlayer = player1;
+            //enable mouse
+            setEnableMouse(true);
+        }
+    }
+    private void placeStoneGraphic(String outcome){
+        if(outcome == "STONE_PLACED"){
+            repaint();
+        }
+        else if(outcome == "PLAYER_WIN"){
+            repaint();
+            JOptionPane.showMessageDialog(this,
+                    currPlayer.getName() + " wins!!!!!!!",
+                    "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            setEnableMouse(false);
+        }
+        if(outcome == "BOARD_FULL"){
+            repaint();
+            JOptionPane.showMessageDialog(this,
+                    "DRAW!",
+                    "Game Over", JOptionPane.INFORMATION_MESSAGE);
             setEnableMouse(false);
         }
     }

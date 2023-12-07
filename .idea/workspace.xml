@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="getPid">
-      <change afterPath="$PROJECT_DIR$/src/noapplet/example/NetworkPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/noapplet/example/OmokLog.java" afterDir="false" />
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="OmokLog class created because I hated it in Omok class :P">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/noapplet/example/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/noapplet/example/Omok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Omok.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/noapplet/example/OmokLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/OmokLog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +79,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OmokLog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="noapplet.example.OmokLog" />
+      <module name="noapplet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="noapplet.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OmokLog" />
         <item itemvalue="Application.Omok" />
       </list>
     </recent_temporary>
@@ -113,7 +125,7 @@
       <workItem from="1701219237765" duration="135000" />
       <workItem from="1701380360018" duration="18000" />
       <workItem from="1701382164432" duration="2679000" />
-      <workItem from="1701817977557" duration="22467000" />
+      <workItem from="1701817977557" duration="26834000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -403,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701920462592</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="OmokLog class created because I hated it in Omok class :P">
+      <option name="closed" value="true" />
+      <created>1701924621609</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701924621609</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +441,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="exit button on toolbar" />
     <MESSAGE value="disable select buttons" />
     <MESSAGE value="key shortcuts" />
     <MESSAGE value="time stamp: 11:59 pm" />
@@ -446,6 +465,7 @@
     <MESSAGE value="connect response shown in log" />
     <MESSAGE value="connects successfully!!!!" />
     <MESSAGE value="getPid" />
-    <option name="LAST_COMMIT_MESSAGE" value="getPid" />
+    <MESSAGE value="OmokLog class created because I hated it in Omok class :P" />
+    <option name="LAST_COMMIT_MESSAGE" value="OmokLog class created because I hated it in Omok class :P" />
   </component>
 </project>
