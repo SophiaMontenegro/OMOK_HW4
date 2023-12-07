@@ -60,7 +60,6 @@ public class OmokLog{
         String path = "/new/?strategy=" + strategy;
         String query = URL + path;
         boolean valid = validURL(query);
-        System.out.println(valid);
         if(valid) {
             String connectResponse = sendGet(query);
             if (connectResponse == null) {
@@ -104,7 +103,7 @@ public class OmokLog{
         display = new JTextArea(13, 40);
         display.setEditable(false);
         var scroll = new JScrollPane(display);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);//changed
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         messageBox.add(scroll);
 
@@ -116,33 +115,19 @@ public class OmokLog{
         messageBox.add(closeBar);
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //close window
+                int result = JOptionPane.showConfirmDialog(logFrame,"Are you sure you want to exit Log? You will not be able to reopen this game's log", "Exit Log",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if(result == JOptionPane.YES_OPTION){
+                    //close window
+                    logFrame.dispose();
 
-                logFrame.dispose();
+                }else if (result == JOptionPane.NO_OPTION) {
+                    //do nothing
+                    //resume
+                }
             }
         });
         logFrame.add(messageBox);
     }
-    public static void main(String[] args) {
-        OmokLog logTest = new OmokLog();
-        logTest.connectURL("http://omok.atwebpages.com", "Smart");
-        int x = 4;
-        int y = 5;
-        String response = logTest.sendPlay(x,y);
-        System.out.println(response);
-
-        String[] responseArray = response.split("\"");
-        String stringX = responseArray[18];
-        System.out.println(stringX);
-        stringX = stringX.substring(1,2);
-        String stringY = responseArray[20];
-        System.out.println(stringY);
-        stringY = stringY.substring(1,2);
-        int moveX = Integer.valueOf(stringX);
-        int moveY = Integer.valueOf(stringY);
-
-        System.out.println(moveX);
-        System.out.println(moveY);
-    }
-
 }

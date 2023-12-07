@@ -176,21 +176,6 @@ public class Omok extends NoApplet{
             }
         });
         menu.add(network);
-
-        //log
-        JMenuItem log = new JMenuItem("LOG", KeyEvent.VK_L);
-        log.setIcon(createImageIcon("log.png"));
-        log.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_L, InputEvent.ALT_DOWN_MASK));
-        log.getAccessibleContext().setAccessibleDescription(
-                "Network Log");
-        log.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //open log
-                //log.createLogFrame();
-            }
-        });
-        menu.add(log);
         return menuBar;
     }
 
@@ -291,7 +276,7 @@ public class Omok extends NoApplet{
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(gameInProgress){
-                    int result = JOptionPane.showConfirmDialog(networkFrame,"Are you sure you want start a new Network Game?", "Game In Progress",
+                    int result = JOptionPane.showConfirmDialog(networkFrame,"Are you sure you want start a new Game?", "Game In Progress",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE);
                     if(result == JOptionPane.YES_OPTION){
