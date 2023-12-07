@@ -19,7 +19,7 @@ public class OmokLog{
     public OmokLog(){
         //nothing
     }
-    private String sendGet(String query){
+    private String sendGet(String query){//send and receive from web
         HttpURLConnection connect = null;
         try{
             URL url = new URL(query);
@@ -54,13 +54,15 @@ public class OmokLog{
         }
     }
     public void connectURL(String URL, String strategy){
-        createLogFrame();
-        //add send message
+        createLogFrame();//create log
+
         this.URL = URL; //save url
+        String info = "/info/";
         String path = "/new/?strategy=" + strategy;
         String query = URL + path;
-        boolean valid = validURL(query);
+        boolean valid = validURL(query);//check if url is valid
         if(valid) {
+            String infoResponse = sendGet(URL + info);//retrieve info
             String connectResponse = sendGet(query);
             if (connectResponse == null) {
                 JOptionPane.showMessageDialog(logFrame, "Fail to Connect! Try Again");
