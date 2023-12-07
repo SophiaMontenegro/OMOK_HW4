@@ -17,7 +17,7 @@ public class ConnectURL {
     public String sendGet(){
         HttpURLConnection connect = null;
 
-        String path = "/new/?strategy" + choice; //include choice
+        String path = "/new/?strategy=" + choice; //include choice
         try{
             URL url = new URL(serverURL + path);
             connect = (HttpURLConnection)url.openConnection();

@@ -296,13 +296,13 @@ public class Omok extends NoApplet{
                 if(random.isSelected()){
                     displayOp = "Random Selected!";
                     //save option
-                    strategy = "r";
+                    strategy = "Random";
                     ableToConnect = true;
                 }
                 else if(smart.isSelected()){
                     displayOp = "Smart Selected!";
                     //save option
-                    strategy = "s";
+                    strategy = "Smart";
                     ableToConnect = true;
                 }
                 else{
