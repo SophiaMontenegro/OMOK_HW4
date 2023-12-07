@@ -44,20 +44,36 @@ public class OmokLog{
         }
         return null;
     }
+    private boolean validURL(String query){
+        HttpURLConnection connect = null;
+        try{
+            new URL(query).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public void connectURL(String URL, String strategy){
         createLogFrame();
         //add send message
         this.URL = URL; //save url
         String path = "/new/?strategy=" + strategy;
         String query = URL + path;
-        String connectResponse = sendGet(query);
-        if(connectResponse == null){
-            JOptionPane.showMessageDialog(logFrame, "Fail to Connect! Try Again");
-            return;
+        boolean valid = validURL(query);
+        System.out.println(valid);
+        if(valid) {
+            String connectResponse = sendGet(query);
+            if (connectResponse == null) {
+                JOptionPane.showMessageDialog(logFrame, "Fail to Connect! Try Again");
+                return;
+            }
+            //retrieve pid
+            String[] responseArray = connectResponse.split("\"");
+            pid = responseArray[5];
         }
-        //retrieve pid
-        String[] responseArray = connectResponse.split("\"");
-        pid = responseArray[5];
+        else{
+            JOptionPane.showMessageDialog(logFrame, "Fail to Connect! Try Again");
+        }
     }
     public String sendPlay(int x, int y){
         String path =  "/play/?pid="+ pid +"&x=" + x + "&y=" + y;
@@ -101,6 +117,7 @@ public class OmokLog{
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //close window
+
                 logFrame.dispose();
             }
         });

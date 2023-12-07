@@ -17,13 +17,6 @@ public class Omok extends NoApplet{
     private static boolean gameInProgress = false;
     private String serverURLConnect;
 
-    private OmokLog log; //logFrame
-    //private String response;
-
-    //private JTextArea display; //logFrame
-
-
-
     public Omok() {
 
         var frame = new JFrame("Omok");
@@ -36,7 +29,6 @@ public class Omok extends NoApplet{
         frame.add(toolBar, BorderLayout.WEST);
 
         boardPanel = new BoardPanel();
-        log = new OmokLog();
 
         frame.add(boardPanel, BorderLayout.CENTER);
 
@@ -158,7 +150,6 @@ public class Omok extends NoApplet{
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE);
                 if(result == JOptionPane.YES_OPTION){
-                    //JOptionPane.showOptionDialog(frame, "Bye","Exiting...", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
                     boardPanel.clearBoard();
                     frame.dispose();
 
@@ -312,7 +303,6 @@ public class Omok extends NoApplet{
                         return; //don't continue
                     }
                 }
-                gameInProgress = true;
                 //must have choosen a strategy
                 String displayOp = "";
                 String strategy = "s";
@@ -336,28 +326,17 @@ public class Omok extends NoApplet{
                     displayOp = "No Server URL Inputted!";
                     ableToConnect = false;
                 }
-                serverURLConnect = serverURL.getText();
-                boardPanel.createWebGame(serverURLConnect, strategy);
-                //log.connectWeb(serverURLConnect, strategy);
-                //log.addToLog();
-
-                //connect to server
-                /*
-                if(connectResponse == null){
-                    displayOp = "Connection Failed! Try again!";
-                    ableToConnect = false;
-                }*/
-
-                //open log if connection is successful
                 if(!ableToConnect){
                     JOptionPane.showMessageDialog(networkFrame, displayOp);
                 }
                 else{
+                    //proceed
+                    serverURLConnect = serverURL.getText();
+                    boardPanel.createWebGame(serverURLConnect, strategy);//create web game
                     //close networkFrame
-                    //response = connectResponse;
                     networkFrame.dispose();
                     setSelectButtonsEnable(false);
-                    //log.createLogFrame();
+                    gameInProgress = true;
                 }
             }
         });
@@ -367,42 +346,5 @@ public class Omok extends NoApplet{
 
         networkFrame.add(networkButtons, BorderLayout.SOUTH);
     }
-    /*
-    private void logFrame(){
-        //should display received and response messages
-        JFrame logFrame = new JFrame("Omok Log");
-        logFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        logFrame.setSize(300,300);
-        logFrame.setVisible(true);
-
-        //panel for messages
-        JPanel messageBox = new JPanel();
-        messageBox.setPreferredSize(new Dimension(300, 200));
-        display = new JTextArea(13, 25);
-        display.setEditable(false);
-        var scroll = new JScrollPane(display);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        messageBox.add(scroll);
-
-        //panel for close
-        JPanel closeBar = new JPanel();
-        closeBar.setPreferredSize(new Dimension(300, 50));
-        var close = new JButton("CLOSE");
-        closeBar.add(close);
-        messageBox.add(closeBar);
-        close.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //close window
-                logFrame.dispose();
-            }
-        });
-        logFrame.add(messageBox);
-
-        if(response != null){
-            display.append(response);
-            display.append("\n");
-        }
-    }*/
 }
 
