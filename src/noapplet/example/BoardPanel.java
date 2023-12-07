@@ -157,7 +157,6 @@ public class BoardPanel extends JPanel {
                 placeStoneGraphic(outcome);//winner
             }
         } else {//network
-            //System.out.println("TOUCH THIS");//test
             outcome = currPlayer.requestMove(boardObj, row, col);
             placeStoneGraphic(outcome);
             currPlayer = player1;
