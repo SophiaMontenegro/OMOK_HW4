@@ -19,13 +19,11 @@ public class OmokLog{
     public OmokLog(){
         //nothing
     }
-    private String sendGet(String URL, String strategy){
-        this.URL = URL;
+    private String sendGet(String query){
         HttpURLConnection connect = null;
-
-        String path = "/new/?strategy=" + strategy; //include choice
         try{
-            URL url = new URL(URL + path);
+            URL url = new URL(query);
+            addToLog(query);
             connect = (HttpURLConnection)url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
             StringBuilder response = new StringBuilder();
@@ -35,10 +33,7 @@ public class OmokLog{
                 response.append(line);
             }
             String responseReturn = response.toString();
-
-            //retrieve pid
-            String[] responseArray = responseReturn.split("\"");
-            pid = responseArray[5];
+            addToLog(responseReturn);
             return responseReturn;
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,34 +45,25 @@ public class OmokLog{
         return null;
     }
     public void connectURL(String URL, String strategy){
-        //add send message
-        String connectResponse = sendGet(URL, strategy);
         createLogFrame();
-        addToLog(connectResponse);
+        //add send message
+        this.URL = URL; //save url
+        String path = "/new/?strategy=" + strategy;
+        String query = URL + path;
+        String connectResponse = sendGet(query);
+        if(connectResponse == null){
+            JOptionPane.showMessageDialog(logFrame, "Fail to Connect! Try Again");
+            return;
+        }
+        //retrieve pid
+        String[] responseArray = connectResponse.split("\"");
+        pid = responseArray[5];
     }
     public String sendPlay(int x, int y){
-        HttpURLConnection con = null;
         String path =  "/play/?pid="+ pid +"&x=" + x + "&y=" + y;
-        try {
-            URL url = new URL(URL + path);
-            addToLog(URL + path);
-            con = (HttpURLConnection) url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
-            while ((line = in.readLine()) != null) {
-                response.append(line);
-            }
-            addToLog(response.toString());
-            return response.toString();
-        } catch (IOException e) {
-            e.printStackTrace(); //comment out?
-        } finally {
-            if (con != null) {
-                con.disconnect();
-            }
-        }
-        return null;
+        String query = URL + path;
+        String connectResponse = sendGet(query);
+        return connectResponse;
     }
 
     public void addToLog(String message){

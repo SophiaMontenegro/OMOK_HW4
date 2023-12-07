@@ -95,10 +95,6 @@ public class Omok extends NoApplet{
         computer.setEnabled(enable);
         play.setEnabled(enable);
     }
-    private static void setGameInProgress(boolean progress) {
-        gameInProgress = progress;
-    }
-
     private JMenuBar getMenuBar(JFrame frame){
         JMenuBar menuBar = new JMenuBar();
 

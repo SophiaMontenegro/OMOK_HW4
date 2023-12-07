@@ -128,7 +128,6 @@ public class BoardPanel extends JPanel {
             if (outcome == "STONE_PLACED") {//send only if its valid
                 //send move
                 String response = log.sendPlay(row, col);
-                //System.out.println(response); //test
                 //split response
                 String[] responseArray = response.split("\"");
                 String stringX = responseArray[18];
@@ -149,6 +148,7 @@ public class BoardPanel extends JPanel {
                 int moveY = Integer.valueOf(stringY);
                 placeStoneGraphic(outcome);
                 currPlayer = player2;
+                status = currPlayer.getName() + "'s turn!";
                 //disable mouse
                 setEnableMouse(false);
                 placeWebGame(moveX, moveY, "network");
@@ -161,12 +161,12 @@ public class BoardPanel extends JPanel {
             outcome = currPlayer.requestMove(boardObj, row, col);
             placeStoneGraphic(outcome);
             currPlayer = player1;
+            status = currPlayer.getName() + "'s turn!";
             //enable mouse
             setEnableMouse(true);
         }
     }
     private void placeStoneGraphic(String outcome){
-        //System.out.println("HOW DID YOU GET IN HERE?");//test
         if(outcome == "STONE_PLACED"){
             repaint();
         }
