@@ -15,7 +15,12 @@ public class Omok extends NoApplet{
     private static JButton play;
     private static BoardPanel boardPanel;
     private String serverURLConnect;
-    private String response;
+
+    private OmokLog log; //logFrame
+    //private String response;
+
+    //private JTextArea display; //logFrame
+
 
 
     public Omok() {
@@ -30,6 +35,7 @@ public class Omok extends NoApplet{
         frame.add(toolBar, BorderLayout.WEST);
 
         boardPanel = new BoardPanel();
+        log = new OmokLog();
 
         frame.add(boardPanel, BorderLayout.CENTER);
 
@@ -49,7 +55,7 @@ public class Omok extends NoApplet{
         computer = new JRadioButton("Computer");
         play = new JButton("PLAY");
         ButtonGroup group = new ButtonGroup();
-        group .add(computer);
+        group.add(computer);
         group.add(human);
         JLabel select = new JLabel("Select opponent:");
 
@@ -186,7 +192,7 @@ public class Omok extends NoApplet{
         log.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //open log
-                logFrame();
+                //log.createLogFrame();
             }
         });
         menu.add(log);
@@ -313,15 +319,16 @@ public class Omok extends NoApplet{
                     ableToConnect = false;
                 }
                 serverURLConnect = serverURL.getText();
-                ConnectURL connectToWeb = new ConnectURL(serverURLConnect, strategy);
-                String connectResponse = connectToWeb.sendGet();
-                String pid = connectToWeb.getPid();
+                boardPanel.createWebGame(serverURLConnect, strategy);
+                //log.connectWeb(serverURLConnect, strategy);
+                //log.addToLog();
 
                 //connect to server
+                /*
                 if(connectResponse == null){
                     displayOp = "Connection Failed! Try again!";
                     ableToConnect = false;
-                }
+                }*/
 
                 //open log if connection is successful
                 if(!ableToConnect){
@@ -329,9 +336,10 @@ public class Omok extends NoApplet{
                 }
                 else{
                     //close networkFrame
-                    response = connectResponse;
+                    //response = connectResponse;
                     networkFrame.dispose();
-                    logFrame();
+                    setSelectButtonsEnable(false);
+                    //log.createLogFrame();
                 }
             }
         });
@@ -341,6 +349,7 @@ public class Omok extends NoApplet{
 
         networkFrame.add(networkButtons, BorderLayout.SOUTH);
     }
+    /*
     private void logFrame(){
         //should display received and response messages
         JFrame logFrame = new JFrame("Omok Log");
@@ -351,7 +360,7 @@ public class Omok extends NoApplet{
         //panel for messages
         JPanel messageBox = new JPanel();
         messageBox.setPreferredSize(new Dimension(300, 200));
-        var display = new JTextArea(13, 25);
+        display = new JTextArea(13, 25);
         display.setEditable(false);
         var scroll = new JScrollPane(display);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -376,6 +385,6 @@ public class Omok extends NoApplet{
             display.append(response);
             display.append("\n");
         }
-    }
+    }*/
 }
 

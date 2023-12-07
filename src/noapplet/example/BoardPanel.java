@@ -22,10 +22,10 @@ public class BoardPanel extends JPanel {
 
     private Player player1; //main user
     private Player player2; //can be another player or computer
-    private Player currPlayer;//delete?
+    private Player currPlayer;
 
-    private String gameMode; //delete?
-
+    private String gameMode;
+    private OmokLog log;
     private boolean enableMouse = false;
 
     public BoardPanel(){
@@ -46,15 +46,24 @@ public class BoardPanel extends JPanel {
             }
         });
     }
+    public void createWebGame(String URL, String strategy){
+        log = new OmokLog();
+        setGameMode("NETWORK");
+        log.connectURL(URL, strategy);
+    }
     public void setGameMode(String mode){
         gameMode = mode;
         if(mode == "HUMAN"){
             player1 = new HumanPlayer("player1", Color.PINK);
             player2 = new HumanPlayer("player2", Color.BLACK);
         }
-        else {//human vs computer
+        else if(mode == "COMPUTER"){
             player1 = new HumanPlayer("player1", Color.PINK);
             player2 = new ComputerPlayer("computer", Color.BLACK);
+        }
+        else{//network
+            player1 = new HumanPlayer("player1", Color.PINK);
+            player2 = new HumanPlayer("network", Color.BLACK);
         }
         setCurrentPlayer();
         setEnableMouse(true);
@@ -74,12 +83,23 @@ public class BoardPanel extends JPanel {
     }
 
     private void place(int row, int col){
-        String outcome;
-        if(currPlayer.getName() == "computer"){
-            outcome = currPlayer.requestMove(boardObj, -1, -1);
+        String outcome = " ";
+        if(gameMode == "NETWORK"){
+            if(currPlayer.getName() == "network"){
+                //receive move
+            }
+            else{//human
+                //send move
+                outcome = currPlayer.requestMove(boardObj, row, col);
+            }
         }
-        else {
-            outcome = currPlayer.requestMove(boardObj, row, col);
+        else{//gameMode is Computer or Human
+            if(currPlayer.getName() == "computer"){
+                outcome = currPlayer.requestMove(boardObj, -1, -1);
+            }
+            else {
+                outcome = currPlayer.requestMove(boardObj, row, col);
+            }
         }
         if(outcome == "STONE_PLACED"){
             repaint();
