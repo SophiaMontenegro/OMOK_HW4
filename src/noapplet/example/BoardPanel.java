@@ -118,20 +118,32 @@ public class BoardPanel extends JPanel {
     private void placeWebGame(int row, int col, String playerName) {
         String outcome;
 
-        if (currPlayer.getName() == "human") {
+        if (currPlayer.getName() == "player1") {
             outcome = currPlayer.requestMove(boardObj, row, col);//clicked
             if (outcome == "STONE_PLACED" || outcome == "PLAYER_WIN") {//send only if its valid
                 //send move
                 String response = log.sendPlay(row, col);
+                //System.out.println(response); //test
                 //split response
                 String[] responseArray = response.split("\"");
                 String stringX = responseArray[18];
-                stringX = stringX.substring(1, 2);
+                if(stringX.length() == 4){
+                    stringX = stringX.substring(1, 3);
+                }
+                else{
+                    stringX = stringX.substring(1, 2);
+                }
                 String stringY = responseArray[20];
-                stringY = stringY.substring(1, 2);
+                if(stringY.length() == 4){
+                    stringY = stringY.substring(1, 3);
+                }
+                else{
+                    stringY = stringY.substring(1, 2);
+                }
                 int moveX = Integer.valueOf(stringX);
+                System.out.println("x "+moveX);//test
                 int moveY = Integer.valueOf(stringY);
-                currPlayer = player2;
+                System.out.println("y "+moveY);//test
                 placeStoneGraphic(outcome);
                 currPlayer = player2;
                 //disable mouse
@@ -139,6 +151,7 @@ public class BoardPanel extends JPanel {
                 placeWebGame(moveX, moveY, "network");
             }
         } else {//network
+            //System.out.println("TOUCH THIS");//test
             outcome = currPlayer.requestMove(boardObj, row, col);
             placeStoneGraphic(outcome);
             currPlayer = player1;
@@ -147,6 +160,7 @@ public class BoardPanel extends JPanel {
         }
     }
     private void placeStoneGraphic(String outcome){
+        //System.out.println("HOW DID YOU GET IN HERE?");//test
         if(outcome == "STONE_PLACED"){
             repaint();
         }
