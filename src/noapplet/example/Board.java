@@ -52,7 +52,7 @@ public class Board {
     }
 
     public String validateMove(int x, int y, Player player) {
-        if(isEmpty(x, y) && isValid(x,y)){
+        if(isValid(x,y) && isEmpty(x, y)){
             placeStone(x, y, player);
             if(isWonBy(player)){
                 return "PLAYER_WIN";
