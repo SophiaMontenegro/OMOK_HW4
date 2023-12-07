@@ -315,7 +315,7 @@ public class Omok extends NoApplet{
                 serverURLConnect = serverURL.getText();
                 ConnectURL connectToWeb = new ConnectURL(serverURLConnect, strategy);
                 String connectResponse = connectToWeb.sendGet();
-
+                String pid = connectToWeb.getPid();
 
                 //connect to server
                 if(connectResponse == null){

@@ -28,7 +28,12 @@ public class ConnectURL {
             while((line = in.readLine()) != null){
                 response.append(line);
             }
-            return response.toString();
+            String responseReturn = response.toString();
+
+            //retrieve pid
+            String[] responseArray = responseReturn.split("\"");
+            pid = responseArray[5];
+            return responseReturn;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="connect response shown in log">
+    <list default="true" id="528221c7-80b8-417f-a1d0-551581f47856" name="Changes" comment="connects successfully!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/noapplet/example/ConnectURL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/ConnectURL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/noapplet/example/Omok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/noapplet/example/Omok.java" afterDir="false" />
@@ -111,7 +111,7 @@
       <workItem from="1701219237765" duration="135000" />
       <workItem from="1701380360018" duration="18000" />
       <workItem from="1701382164432" duration="2679000" />
-      <workItem from="1701817977557" duration="17337000" />
+      <workItem from="1701817977557" duration="18638000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -385,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701918587413</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="connects successfully!!!!">
+      <option name="closed" value="true" />
+      <created>1701919187230</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1701919187230</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="progress time stamp: 7:59pm" />
     <MESSAGE value="options shown and toolbar shown" />
     <MESSAGE value="exit button on toolbar" />
     <MESSAGE value="disable select buttons" />
@@ -428,6 +435,7 @@
     <MESSAGE value="connect progress" />
     <MESSAGE value="option added" />
     <MESSAGE value="connect response shown in log" />
-    <option name="LAST_COMMIT_MESSAGE" value="connect response shown in log" />
+    <MESSAGE value="connects successfully!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="connects successfully!!!!" />
   </component>
 </project>
